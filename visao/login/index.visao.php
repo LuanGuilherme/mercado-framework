@@ -1,18 +1,33 @@
-<h2>Acesse o sistema</h2>
-
-<form method="POST" action="">
-	
-	<div class="form-group">
-    	<label for="login">Login:</label>
-    	<input id="login" class="form-control" type="text" name="login">
-  	</div>
-
-	<div class="form-group">
-		<label for="passwd">Password:</label>
-		<input id="passwd" class="form-control" type="password" name="passwd">
+<?php require 'controlador/loginControlador.php'; ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="estilo.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+</head>
+<body>
+	<?php require '../cabecalho.php'; ?>
+	<form method="POST">
+	<div class="dados">
+		<h1>Login</h1><br>
+		<label for="nome">Nome: </label>
+		<input type="text" name="nome" placeholder="Nome"><br>
+		<br>
+		<label for="senha">Senha: </label>
+		<input type="password" name="senha" placeholder="Senha"><br>
+		<br>
+		<input type="submit" id="botao" onclick="vai()">
 	</div>
-
-	
-	<button type="submit" class="btn btn-primary">vai login</button>
-
-</form>
+	<?php require '../rodape.php'; ?>
+	</form>
+</body>
+</html>
+<script>
+	function vai() {
+		<?php 
+			index();
+		 ?>
+	}
+</script>

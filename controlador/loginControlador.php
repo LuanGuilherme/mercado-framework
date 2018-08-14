@@ -3,14 +3,14 @@
 /** anon */
 function index() {
     if (ehPost()) {
-        $login = $_POST["login"];
-        $passwd = $_POST["passwd"];
+        $nome = $_POST["nome"];
+        $senha = $_POST["senha"];
 
-        if (authLogin($login, $passwd)) {
-            alert("bem vindo" . $login);
+        if (authLogin($nome, $senha)) {
+            alert("Bem vindo" . $nome);
             redirect("usuario");
         } else {
-            alert("usuario ou senha invalidos!");
+            alert("Usuario ou senha invalidos!");
         }
     }
     exibir("login/index");

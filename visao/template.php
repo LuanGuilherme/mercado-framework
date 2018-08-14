@@ -3,7 +3,7 @@
         <title>template MVC</title>
         <base href="<?= BASE_URL ?>">
 
-        <link rel="stylesheet" href="./publico/css/app.css">
+        <link rel="stylesheet" href="./publico/css/estilo.css">
     </head>
     <body class="container">
         <?php require "visao/cabecalho.php"; ?>
