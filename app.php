@@ -8,7 +8,7 @@ require_once 'bibliotecas/uteis.php';
 
 //libs opcionais
 require_once 'bibliotecas/alert.php';
-//require_once 'bibliotecas/auth.php';
+require_once 'bibliotecas/auth.php';
 
-define('CONTROLADOR_PADRAO', 'usuario');
-define('BASE_URL', 'http://localhost:8080/noopmvc/');
+define('CONTROLADOR_PADRAO', 'cliente');
+define('BASE_URL', 'http://localhost/mercado-framework/');

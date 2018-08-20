@@ -1,7 +1,6 @@
 <?php 
-require 'controlador/produtoControlador.php';
+//require 'controlador/produtoControlador.php';
 selectProduto();
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,11 +12,11 @@ selectProduto();
 	<h1 id="tituProdutos">Produtos em destaque</h1>
 	<div id="produtos">
 		<marquee behavior="alternate" direction="left">
-			<img id="marquinhos" src="img/s1.jpg">
-			<img id="marquinhos" src="img/s2.jpg">
-			<img id="marquinhos" src="img/s3.jpg">
-			<img id="marquinhos" src="img/s4.jpg">
-			<img id="marquinhos" src="img/s5.jpg">
+			<img src="img/s1.jpg">
+			<img src="img/s2.jpg">
+			<img src="img/s3.jpg">
+			<img src="img/s4.jpg">
+			<img src="img/s5.jpg">
 		</marquee>
 		<?php foreach ($produtos as $produto) : ?>
 

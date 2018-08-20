@@ -92,7 +92,7 @@ function atualizarCliente() {
 
 }
 
-function removerCliente() {
+function deletarCliente() {
     $idcliente = $_SESSION["idcliente"];
     $id = $idcliente["idcliente"];
     $comando = "DELETE FROM clientes WHERE idcliente = $id";

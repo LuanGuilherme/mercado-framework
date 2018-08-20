@@ -3,8 +3,7 @@
 require "modelo/clienteModelo.php";
 
 function index() {
-    $dados["clientes"] = pegarTodosclientes();
-    exibir("cliente/listar", $dados);
+    return(selecionarCliente());
 }
 
 function addCliente($nome, $email, $idade, $endereco, $senha, $cpf) {

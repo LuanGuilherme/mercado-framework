@@ -6,7 +6,8 @@
         <link rel="stylesheet" href="./publico/css/estilo.css">
     </head>
     <body class="container">
-        <?php require "visao/cabecalho.php"; ?>
+        <?php require "cabecalho.php"; ?>
+        <?php require "produto/index"; ?>
 
         <?php alertComponentRender(); ?>
 

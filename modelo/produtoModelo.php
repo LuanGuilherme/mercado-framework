@@ -32,12 +32,12 @@ function alterarProduto ($nomeproduto, $preco, $quantidade, $descproduto, $idimg
 
 function selecionarProduto () {
 	$comando = "SELECT * FROM produtos";
-	$retorno = mysqli_query(conexao(), $comando);
+	$retorno = mysqli_query(conn(), $comando);
 	$produtos = array();
 	while($registro = mysqli_fetch_assoc($retorno)) {
 		$produtos[] = $registro;
 	}
-	return ($produtos[]);
+	return ($produtos);
 }
 
 function selecionarImagem ($idimg) {

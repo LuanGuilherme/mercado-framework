@@ -1,5 +1,10 @@
 <?php 
-require 'produtoModelo';
+require 'modelo/produtoModelo.php';
+
+function index(){
+	selecionarProduto();
+	exibir("produto/index");
+}
 
 function addProduto($nomeproduto, $preco, $quantidade, $descproduto, $idimg) {
 	adicionarProduto($nomeproduto, $preco, $quantidade, $descproduto, $idimg);

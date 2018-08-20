@@ -1,9 +1,8 @@
 <?php 
-@session_start();
-if (!function_exists('conexao')){
-	require 'PHP/cnx.php';
+if (!function_exists('conn')){
+	conn();
 }
-require 'clineteControlador.php';
+//require 'controlador/clienteControlador.php';
 visualizarCliente();
 ?>
 <!DOCTYPE html>
@@ -14,7 +13,7 @@ visualizarCliente();
 </head>
 <body>
 	<ul>
-		<img id="logo" title="Mercado" src="logo.png">
+		<img id="logo" title="Mercado" src="./publico/img/logo.png">
 		<li><a href="index.php">Home</a></li>
 		<li><a href="listarProduto.php">Todos os produtos</a></li>
 		<?php $nome == "Admin" ? "<li><a href='formularioProduto.php'>Adicionar produto</a></li>": ""; ?>
@@ -27,14 +26,14 @@ visualizarCliente();
 			<?php require 'pesquisa.php'; ?>
 		</form>
 		<?php endif; ?>
-		<li id="user"><?php $nome == "Logar" ? "<a href='login.php'>Logar</a><!--" : "<a href='edit.php'>$nome</a>"; ?>
+		<li id="user"><?php $nome == "Logar" ? "<a href='login/index.visao.php'>Logar</a><!--" : "<a href='login/edit.visao.php'>$nome</a>"; ?>
 			<ul id="sub">
-				<?php $nome == "Admin" ? "" : "<li><a href='edit.php'>Editar</a></li>"; ?>
+				<?php $nome == "Admin" ? "" : "<li><a href='login/edit.visao.php'>Editar</a></li>"; ?>
 				<li><a href="PHP/logout.php">Sair</a></li>
 			</ul>
 			<?php $nome == "Logar" ? "-->" : ""; ?>
 		</li>
-		<?php $nome != "Admin" ? "<a href='carrinho.php'><img id='carrinho' src='img/carrinho.png'></a>": ""; ?>
+		<?php $nome != "Admin" ? "<a href='produto/carrinho.php'><img id='carrinho' src='publico/img/carrinho.png'></a>": ""; ?>
 	</ul>
 </body>
 </html>
