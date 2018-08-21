@@ -3,7 +3,7 @@
 require "modelo/clienteModelo.php";
 
 function index() {
-    return(selecionarCliente());
+    redirecionar("visao/login");
 }
 
 function addCliente($nome, $email, $idade, $endereco, $senha, $cpf) {
@@ -12,7 +12,7 @@ function addCliente($nome, $email, $idade, $endereco, $senha, $cpf) {
 
 function removerCliente($id) {
     alert(deletarcliente($id));
-    redirecionar("cliente/index");
+    redirecionar("visao/login");
 }
 
 function editar($id) {

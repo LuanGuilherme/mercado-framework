@@ -9,18 +9,14 @@ function deletarProduto ($nomeproduto) {
 
 	$comando = "DELETE FROM produtos WHERE idproduto = $idproduto";
 
-	$retorno = mysqli_query(conexao(), $comando); 
-
-	if($retorno) {
-		header("refresh:1; url=../listarProduto.php");
-	}
+	mysqli_query(conexao(), $comando); 
 }
 
 function adicionarProduto ($nomeproduto, $preco, $quantidade, $descproduto, $idimg) {
 	$comando = "INSERT INTO produtos (idproduto, nomeproduto, preco, quantidade, descproduto, idimg)
 		values (null, '$nomeproduto', '$preco', '$quantidade', '$descproduto', '$idimg')";
 
-	$retorno = mysqli_query(conexao(), $comando);
+	mysqli_query(conexao(), $comando);
 }
 
 function alterarProduto ($nomeproduto, $preco, $quantidade, $descproduto, $idimg, $idproduto) {
@@ -40,12 +36,6 @@ function selecionarProduto () {
 	return ($produtos);
 }
 
-function selecionarImagem ($idimg) {
-	$comando2 = "SELECT * FROM imagens WHERE idimg = $idimg";
-	$retorno2 = mysqli_query(conexao(), $comando2);
-	$registro2 = mysqli_fetch_assoc($retorno2);
-	return ($registro2);
-}
 
 function selecianorProdutoPorId ($nomeproduto) {
 	$comando = "SELECT idproduto FROM produtos WHERE nomeproduto = '$nomeproduto'";

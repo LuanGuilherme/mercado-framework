@@ -87,8 +87,7 @@ function atualizarCliente() {
     $comando = "UPDATE clientes
     SET nomecliente = '$nome', email = '$email', idade = '$idade', endereco = '$endereco', senha = '$senha', cpf = '$cpf'
     WHERE idcliente ='$idcliente'";
-    echo mysqli_query(conexao(), $comando) ? "<script> alert('Dados alterados com sucesso'); </script>" : "<script> alert('Ocorreu um erro, tente novamente'); </script>";
-    header("refresh:1;url=../index.php");
+    mysqli_query(conexao(), $comando);
 
 }
 
@@ -96,13 +95,9 @@ function deletarCliente() {
     $idcliente = $_SESSION["idcliente"];
     $id = $idcliente["idcliente"];
     $comando = "DELETE FROM clientes WHERE idcliente = $id";
-    $retorno = mysqli_query(conexao(), $comando); 
-    if ($retorno) {
-        session_destroy();
-        header("location:../index.php");
-    }
+    mysqli_query(conexao(), $comando);
+}    
 
-}
 function selecionarCliente() {
     @extract($_SESSION["idcliente"], EXTR_OVERWRITE);
     @$sql = "SELECT nomecliente FROM clientes WHERE idcliente='$idcliente'";
