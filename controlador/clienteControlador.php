@@ -19,7 +19,8 @@ function editar($id) {
     if (ehPost()) {
         $nome = $_POST["nome"];
         $email = $_POST["email"];
-        alert(atualizarCliente($nome, $email, $_POST["senha"], $_POST["estado"], $_POST["Cidade"], $_POST["Rua"], $_POST["numero"]));
+        $idade = (date("Y") - $_POST["ano"]);
+        atualizarCliente($nome, $email, $idade, $_POST["senha"], $_POST["estado"], $_POST["Cidade"], $_POST["Rua"], $_POST["numero"]);
         redirecionar("cliente/index");
     } else {
         $dados['cliente'] = selecionarCliente();

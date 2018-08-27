@@ -10,5 +10,5 @@ require_once 'bibliotecas/uteis.php';
 require_once 'bibliotecas/alert.php';
 require_once 'bibliotecas/auth.php';
 
-define('CONTROLADOR_PADRAO', 'cliente');
-define('BASE_URL', 'http://localhost/mercado-framework/');
+define('CONTROLADOR_PADRAO', 'produto');
+define('BASE_URL', 'http://localhost/framework_zoada/');

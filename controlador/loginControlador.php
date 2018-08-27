@@ -1,5 +1,6 @@
 <?php
 
+require "modelo/clienteModelo.php";
 /** anon */
 function index() {
     if (ehPost()) {
@@ -8,7 +9,7 @@ function index() {
 
         if (authLogin($nome, $senha)) {
             alert("Bem vindo" . $nome);
-            redirect("usuario");
+            redirecionar("index");
         } else {
             alert("Usuario ou senha invalidos!");
         }

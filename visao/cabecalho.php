@@ -3,7 +3,7 @@ if (!function_exists('conn')){
 	conn();
 }
 //require 'controlador/clienteControlador.php';
-visualizarCliente();
+//visualizarCliente();
 ?>
 <!DOCTYPE html>
 <html>

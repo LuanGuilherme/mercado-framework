@@ -4,6 +4,7 @@ require_once 'app.php'; //arquivo geral da aplicacao
 
 $uri = explode("/", $_SERVER["REQUEST_URI"]); //explore a URL
 
+
 $controllerName = $uri[2]; //coloca como padrao: nomeProjeto/controlador/acao/parametros
 
 if(!$controllerName && CONTROLADOR_PADRAO) {
@@ -52,7 +53,7 @@ try {
                 call_user_func_array($action, $params); //chama a funcao passando parametros   
         } else {
                 alert($authMsg, "warning");
-                redirecionar("produto/index"); die();
+                redirecionar("login"); die();
         }
 
 
