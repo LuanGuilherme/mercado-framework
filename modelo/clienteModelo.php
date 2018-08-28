@@ -119,11 +119,10 @@ function authLogin($login, $passwd) {
             header("refresh:1;url=../login.php");
         }
     }
-    $nome = htmlentities(trim(preg_replace('/[^[:alpha:]_]/', '',$_POST["nome"])));
-    $senha = htmlentities(trim($_POST["senha"]));
+    $nome = htmlentities(trim(preg_replace('/[^[:alpha:]_]/', '',$login)));
+    $senha = htmlentities(trim($passwd));
     if ($nome == "Administrador"  && $senha == "rodartsinimda") {
         $_SESSION["adm"] = true;
-        header("location:../index.php");
     }else{
         logar($nome, $senha);
     }   

@@ -2,8 +2,8 @@
 if (!function_exists('conn')){
 	conn();
 }
-//require 'controlador/clienteControlador.php';
-//visualizarCliente();
+require 'controlador/clienteControlador.php';
+visualizarCliente();
 ?>
 <!DOCTYPE html>
 <html>

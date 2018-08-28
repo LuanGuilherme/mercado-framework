@@ -2,8 +2,8 @@
 require 'modelo/produtoModelo.php';
 
 function index(){
-	selecionarProduto();
-	exibir("produto/index");
+	$produtos = selecionarProduto();
+	exibir("produto/index", $produtos);
 }
 
 function addProduto($nomeproduto, $preco, $quantidade, $descproduto, $idimg) {
@@ -23,10 +23,6 @@ function upadateProduto ($nomeproduto, $preco, $quantidade, $descproduto, $idimg
 
 function selectProduto () {
 	return (selecionarProduto());
-}
-
-function selectImagem ($idimg) {
-	return (selecionarImagem($idimg));
 }
 
 function selectProdutoPerId ($nomeproduto) {

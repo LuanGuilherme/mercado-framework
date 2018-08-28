@@ -7,7 +7,6 @@
     </head>
     <body class="container">
         <?php require "cabecalho.php"; ?>
-        <?php require "produto/index"; ?>
 
         <?php alertComponentRender(); ?>
 

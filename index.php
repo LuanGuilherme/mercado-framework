@@ -4,7 +4,6 @@ require_once 'app.php'; //arquivo geral da aplicacao
 
 $uri = explode("/", $_SERVER["REQUEST_URI"]); //explore a URL
 
-
 $controllerName = $uri[2]; //coloca como padrao: nomeProjeto/controlador/acao/parametros
 
 if(!$controllerName && CONTROLADOR_PADRAO) {
@@ -35,16 +34,19 @@ try {
                     //regra nao eh igual a encontrada na action do controlador
                     $released = false;
                     $authMsg = "Nao tem permissao para acessar essa funcionalidade";
+                    echo "ola";
             }
 
             if(empty($role) && !authIsLoggedIn()) {
                     $released = false;
                     $authMsg = "Voce precisa autenticar-se para acessar!";
+                    echo "eae";
             }
 
             if(!empty($role) && $role == "anon") {
                     //acesso anonimo
                     $released = true;
+                    echo "oi";
             }
 
         }
@@ -53,7 +55,8 @@ try {
                 call_user_func_array($action, $params); //chama a funcao passando parametros   
         } else {
                 alert($authMsg, "warning");
-                redirecionar("login"); die();
+                print_r($controllerFileName);
+                //redirecionar("produto"); die();
         }
 
 

@@ -1,7 +1,3 @@
-<?php 
-//require 'controlador/produtoControlador.php';
-selectProduto();
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +17,7 @@ selectProduto();
 		<?php foreach ($produtos as $produto) : ?>
 
 		<?php 
-			selectImagem($produto["idimg"]);
+			//selectImagem($produto["idimg"]);
 		?>
 
 		<?php if ($idimg <= 12) : ?>
