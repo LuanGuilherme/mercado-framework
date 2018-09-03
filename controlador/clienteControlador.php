@@ -3,7 +3,8 @@
 require "modelo/clienteModelo.php";
 
 function index() {
-    redirecionar("visao/login");
+    $dados = selecionarCliente();
+    exibir("cabecalho", $dados);
 }
 
 function addCliente($nome, $email, $idade, $endereco, $senha, $cpf) {

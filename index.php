@@ -34,19 +34,16 @@ try {
                     //regra nao eh igual a encontrada na action do controlador
                     $released = false;
                     $authMsg = "Nao tem permissao para acessar essa funcionalidade";
-                    echo "ola";
             }
 
             if(empty($role) && !authIsLoggedIn()) {
                     $released = false;
                     $authMsg = "Voce precisa autenticar-se para acessar!";
-                    echo "eae";
             }
 
             if(!empty($role) && $role == "anon") {
                     //acesso anonimo
                     $released = true;
-                    echo "oi";
             }
 
         }

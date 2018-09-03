@@ -1,8 +1,12 @@
 <?php 
 require 'modelo/produtoModelo.php';
-
+require 'modelo/imagemModelo.php';
+/**
+anon
+*/
 function index(){
-	$produtos = selecionarProduto();
+	$produtos["produtos"] = selecionarProduto();
+	$produtos["img"] = selecionarImagem()
 	exibir("produto/index", $produtos);
 }
 

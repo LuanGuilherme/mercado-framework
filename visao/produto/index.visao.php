@@ -16,13 +16,9 @@
 		</marquee>
 		<?php foreach ($produtos as $produto) : ?>
 
-		<?php 
-			//selectImagem($produto["idimg"]);
-		?>
-
-		<?php if ($idimg <= 12) : ?>
+		<?php if ($produto["idimg"] <= 12) : ?>
 		<figure id="prod1">
-			<a href="detalharProduto.php?idproduto=<?=$produto['idproduto']?>&registro2=<?=$registro2['idimg'] ?>"><img src="<?=$registro2['img'] ?>"></a>
+			<!--<a href="detalharProduto.php?idproduto=<?=$produto['idproduto']?>&registro2=<?=$registro2['idimg'] ?>"><img src="<?=$registro2['img'] ?>"></a>-->
 			<figcaption><strong><?=$produto["nomeproduto"]?>:<?=$produto["preco"]?></strong> <br> <?=$produto["descproduto"]?></figcaption>
 		</figure>
 		<?php 

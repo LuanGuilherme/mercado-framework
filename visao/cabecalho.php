@@ -1,10 +1,3 @@
-<?php 
-if (!function_exists('conn')){
-	conn();
-}
-require 'controlador/clienteControlador.php';
-visualizarCliente();
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +16,7 @@ visualizarCliente();
 		<?php $nome == "Logar" ? "<li><a href='cadastro.php'>Cadastrar</a></li>": ""; ?>
 		<?php if ($nome != "Admin") : ?>
 		<form id="busca">
-			<?php require 'pesquisa.php'; ?>
+			<?php //require 'pesquisa.php'; ?>
 		</form>
 		<?php endif; ?>
 		<li id="user"><?php $nome == "Logar" ? "<a href='login/index.visao.php'>Logar</a><!--" : "<a href='login/edit.visao.php'>$nome</a>"; ?>
