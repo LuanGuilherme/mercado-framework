@@ -99,7 +99,7 @@ function selecionarCliente() {
         $aux = mysqli_fetch_assoc(mysqli_query(conexao(), $sql));
         extract($aux, EXTR_OVERWRITE);
         $nome = $nomecliente;
-    }elseif (@$_SESSION["adm"]) {
+    }elseif (@isset($_SESSION["adm"])) {
         $nome = "Admin";
     }else{
         $nome = "Logar";
@@ -113,10 +113,6 @@ function authLogin($login, $passwd) {
         if (mysqli_num_rows($sql) != 0) {
             $_SESSION["idcliente"] = mysqli_fetch_assoc(mysqli_query(conexao(), "SELECT idcliente FROM clientes WHERE nomecliente='$nome' AND senha='$senha'"));
             extract($_SESSION["idcliente"], EXTR_OVERWRITE);
-            header("location:../index.php");
-        }else{
-            echo "<script> alert('Usuário ou senha invalidos!'); </script>";
-            header("refresh:1;url=../login.php");
         }
     }
     $nome = htmlentities(trim(preg_replace('/[^[:alpha:]_]/', '',$login)));

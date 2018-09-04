@@ -1,10 +1,14 @@
 <?php
+session_start();
 
 require "modelo/clienteModelo.php";
 
+/**
+anon
+*/
 function index() {
-    $dados = selecionarCliente();
-    exibir("cabecalho", $dados);
+    $_SESSION["nome"] = selecionarCliente();
+    redirecionar("produto");
 }
 
 function addCliente($nome, $email, $idade, $endereco, $senha, $cpf) {

@@ -1,7 +1,7 @@
 <?php
 
 require "modelo/clienteModelo.php";
-/** anon */
+
 function index() {
     if (ehPost()) {
         $nome = $_POST["nome"];

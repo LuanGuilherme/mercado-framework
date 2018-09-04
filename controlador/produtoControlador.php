@@ -5,8 +5,11 @@ require 'modelo/imagemModelo.php';
 anon
 */
 function index(){
-	$produtos["produtos"] = selecionarProduto();
-	$produtos["img"] = selecionarImagem()
+	$produtos = selecionarProduto();
+	for ($i=0; $i < 20; $i++) { 
+		$produtos[$i]["img"] = selecionarImagem($produtos[$i]["idimg"]);
+	}
+	$produtos["produtos"] = $produtos;
 	exibir("produto/index", $produtos);
 }
 
@@ -26,7 +29,14 @@ function upadateProduto ($nomeproduto, $preco, $quantidade, $descproduto, $idimg
 }
 
 function selectProduto () {
-	return (selecionarProduto());
+	$produtos = selecionarProduto();
+	print_r($produtos);
+	for ($i=0; $i < 20; $i++) { 
+		$produtos[$i]["img"] = selecionarImagem($produtos[$i]["idimg"]);
+	}
+	$produtos["produtos"] = $produtos;
+	//exibir("produto/listar", $produtos);
+
 }
 
 function selectProdutoPerId ($nomeproduto) {
