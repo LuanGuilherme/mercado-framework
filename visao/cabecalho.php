@@ -7,29 +7,28 @@
 <body>
 	<ul>
 		<img id="logo" title="Mercado" src="./publico/img/logo.png">
-		<li><a href="index.php">Home</a></li>
+		<li><a href="./produto">Home</a></li>
 		<li><a href="./produto/selectProduto">Todos os produtos</a></li>
-		<?= $_SESSION["nome"] == "Admin" ? "<li><a href='formularioProduto.php'>Adicionar produto</a></li>": ""; ?>
-		<?= $_SESSION["nome"] == "Admin" ? "<li><a href='PHP/selecionarAlterarProduto.php'>Alterar produto</a></li>": ""; ?>
-		<?= $_SESSION["nome"] == "Admin" ? "<li><a href='PHP/selecionarProduto.php'>Deletar produto</a></li>": ""; ?>
-		<?= $_SESSION["nome"] == "Admin" ? "": "<li><a href='contato.php'>Contato</a></li>"; ?>
-		<?= $_SESSION["nome"] == "Logar" ? "<li><a href='./login/cadastro.visao.php'>Cadastrar</a></li>": ""; ?>
+		<?= $_SESSION["nome"] == "Admin" ? "<li><a href='./produto/addProduto'>Adicionar produto</a></li>": ""; ?>
+		<?= $_SESSION["nome"] == "Admin" ? "<li><a href='./produto/updateProduto'>Alterar produto</a></li>": ""; ?>
+		<?= $_SESSION["nome"] == "Admin" ? "<li><a href='./produto/deleteProduto'>Deletar produto</a></li>": ""; ?>
+		<?= $_SESSION["nome"] == "Admin" ? "": "<li><a href='./produto/contato'>Contato</a></li>"; ?>
+		<?= $_SESSION["nome"] == "Logar" ? "<li><a href='./cliente/addCliente'>Cadastrar</a></li>": ""; ?>
 		<?php if ($_SESSION["nome"] != "Admin") : ?>
-		<form id="busca">
-			<?php //require 'pesquisa.php'; ?>
-		</form>
+			<form id="busca">
+				<?php //require 'pesquisa.php'; ?>
+			</form>
 		<?php endif; 
 		$nome = $_SESSION['nome'];
-		print_r($_SESSION);
 		?>
-		<li id="user"><?php $_SESSION["nome"] == "Logar" ? "<a href='login/index.visao.php'>Logar</a><!--" : "<a href='login/edit.visao.php'>$nome</a>"; ?>
+		<li id="user"><?= $_SESSION["nome"] == "Logar" ? "<a href='./cliente/entrar'>Logar</a><!--" : "<a href='./cliente/editar'>$nome</a>"; ?>
 			<ul id="sub">
-				<?php $_SESSION["nome"] == "Admin" ? "" : "<li><a href='login/edit.visao.php'>Editar</a></li>"; ?>
+				<?= $_SESSION["nome"] == "Admin" ? "" : "<li><a href='./cliente/editar'>Editar</a></li>"; ?>
 				<li><a href="PHP/logout.php">Sair</a></li>
 			</ul>
-			<?php $_SESSION["nome"] == "Logar" ? "-->" : ""; ?>
+			<?= $_SESSION["nome"] == "Logar" ? "-->" : ""; ?>
 		</li>
-		<?php $_SESSION["nome"] != "Admin" ? "<a href='produto/carrinho.php'><img id='carrinho' src='publico/img/carrinho.png'></a>": ""; ?>
+		<?= $_SESSION["nome"] != "Admin" ? "<a href='produto/carrinho.visao.php'><img id='carrinho' src='publico/img/carrinho.png'></a>": ""; ?>
 	</ul>
 </body>
 </html>

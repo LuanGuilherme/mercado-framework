@@ -53,7 +53,7 @@ try {
         } else {
                 alert($authMsg, "warning");
                 print_r($controllerFileName);
-                //redirecionar("cliente"); die();
+                redirecionar("cliente"); die();
         }
 
 

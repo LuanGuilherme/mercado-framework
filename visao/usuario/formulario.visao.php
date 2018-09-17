@@ -1,5 +1,5 @@
 <section>
-		<form id="form" name="form" method="POST">
+		<form id="form" name="form" method="POST" action="<?= @$acao ?>">
 			<div class="dados">
 			<label for="nome">Nome: </label>
 			<input id="nome" type="text" name="nome" required="required" minkenght="3"><br>
@@ -72,10 +72,9 @@
 			<input type="radio" name="Sexo" value="Masculino" required="required"> Masculino
   			<input type="radio" name="Sexo" value="Feminino" required="required"> Feminino<br>
   			<br>
-			
+			<?php extract($_POST); ?>	
   			<input type="submit" name="botao" id="botao" value="Submeter" onclick="validacao()">
 			
 		</form>
 	</section>		
 </body>
-</html>

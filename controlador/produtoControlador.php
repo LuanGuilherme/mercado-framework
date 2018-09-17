@@ -27,19 +27,26 @@ function upadateProduto ($nomeproduto, $preco, $quantidade, $descproduto, $idimg
 	alterarProduto($nomeproduto, $preco, $quantidade, $descproduto, $idimg, $idproduto);
 	exibir("index");
 }
-
+/**
+anon
+*/
 function selectProduto () {
 	$produtos = selecionarProduto();
-	print_r($produtos);
 	for ($i=0; $i < 20; $i++) { 
 		$produtos[$i]["img"] = selecionarImagem($produtos[$i]["idimg"]);
 	}
 	$produtos["produtos"] = $produtos;
-	//exibir("produto/listar", $produtos);
+	exibir("produto/listar", $produtos);
 
 }
 
 function selectProdutoPerId ($nomeproduto) {
 	return (selecionarProdutoPorId($nomeproduto));
+}
+/**
+anon
+*/
+function contato (){
+	exibir("contato");
 }
 ?>

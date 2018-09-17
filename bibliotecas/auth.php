@@ -2,6 +2,10 @@
 
 define('AUTENTICADOR', true);
 
+function auth() {
+	
+}
+
 function authIsLoggedIn() {
     return isset($_SESSION["auth"]);
 }

@@ -3,13 +3,14 @@
 function adicionarCliente() {
     function cadastra ($nome, $email, $idade, $endereco, $senha, $cpf){
         $busca = "SELECT idcliente FROM clientes";
-        if (mysqli_query(conexao(), $busca) == NULL) {
+        if (mysqli_query(conn(), $busca) == NULL) {
             $sql = "INSERT INTO clientes(idcliente, nomecliente, email, idade, endereco, senha, cpf)
         values (1 , '$nome', '$email', '$idade', '$endereco', '$senha', '$cpf')";
         }else{
             $sql = "INSERT INTO clientes(nomecliente, email, idade, endereco, senha, cpf)
         values ('$nome', '$email', '$idade', '$endereco', '$senha', '$cpf')";
         }
+        mysqli_query(conn(), $sql);
     }
     foreach ($_POST as $aux){
         $aux = trim(htmlentities($aux));    
@@ -107,7 +108,7 @@ function selecionarCliente() {
     return($nome);
 }
 
-function authLogin($login, $passwd) {
+function Login($login, $passwd) {
     function logar($nome, $senha){
         $sql = mysqli_query(conexao(), "SELECT * FROM clientes WHERE nomecliente='$nome' AND senha='$senha'");
         if (mysqli_num_rows($sql) != 0) {

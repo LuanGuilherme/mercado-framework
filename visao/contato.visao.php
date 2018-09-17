@@ -1,4 +1,3 @@
-<?php require 'cabecalho.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +24,6 @@
 			<input type="submit" id="botao" name="VAI" onclick="mail()">
 		</form>
 	</div>
-	<?php require 'rodape.php'; ?>
 </body>
 </html>
 <script>
