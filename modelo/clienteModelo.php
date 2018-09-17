@@ -108,11 +108,11 @@ function selecionarCliente() {
     return($nome);
 }
 
-function Login($login, $passwd) {
+function login($login, $passwd) {
     function logar($nome, $senha){
-        $sql = mysqli_query(conexao(), "SELECT * FROM clientes WHERE nomecliente='$nome' AND senha='$senha'");
+        $sql = mysqli_query(conn(), "SELECT * FROM clientes WHERE nomecliente='$nome' AND senha='$senha'");
         if (mysqli_num_rows($sql) != 0) {
-            $_SESSION["idcliente"] = mysqli_fetch_assoc(mysqli_query(conexao(), "SELECT idcliente FROM clientes WHERE nomecliente='$nome' AND senha='$senha'"));
+            $_SESSION["idcliente"] = mysqli_fetch_assoc($sql);
             extract($_SESSION["idcliente"], EXTR_OVERWRITE);
         }
     }

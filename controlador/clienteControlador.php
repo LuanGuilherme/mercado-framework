@@ -16,13 +16,14 @@ anon
 */
 function addCliente() {
     extract($_POST);
-    if ($nome && $senha) {
+    if (!empty($nome) && !empty($senha)) {
         adicionarCliente($nome, $email, $senha, $dia, $mes, $ano, $cpf, $estado, $cidade, $rua, $numero);
         redirecionar("produto");
         alert("Foi");
     }else{
         exibir("usuario/formulario");
         alert("N foi");
+
     }
 }
 
@@ -56,9 +57,11 @@ anon
 */
 function entrar(){
     extract($_POST);
-    if ($nome && $senha) {
-        Login($nome, $senha);
+    if (!empty($nome) && !empty($senha)) {
+        print_r($nome." ".$senha);
+        login($nome, $senha);
         redirecionar("produto");
+        alert("foi");
     }else{
         exibir("login/login");
     }
