@@ -13,6 +13,7 @@
         <main class="container">
             <?php require $viewFilePath; ?>
         </main>
+        <?php require 'rodape.visao.php'; ?>
 
     </body>
 </html>

@@ -77,20 +77,17 @@ function adicionarCliente() {
     }
 }
 
-function atualizarCliente($nome, $email, $idade, $endereco, $senha , $cpf) { 
-    extract($_SESSION["idcliente"], EXTR_OVERWRITE);
+function atualizarCliente($nome, $email, $idade, $endereco, $senha , $cpf, $idcliente) { 
     $comando = "UPDATE clientes
     SET nomecliente = '$nome', email = '$email', idade = '$idade', endereco = '$endereco', senha = '$senha', cpf = '$cpf'
     WHERE idcliente ='$idcliente'";
-    mysqli_query(conexao(), $comando);
+    mysqli_query(conn(), $comando);
 
 }
 
-function deletarCliente() {
-    $idcliente = $_SESSION["idcliente"];
-    $id = $idcliente["idcliente"];
-    $comando = "DELETE FROM clientes WHERE idcliente = $id";
-    mysqli_query(conexao(), $comando);
+function deletarCliente($id) {
+    $comando = "DELETE FROM clientes WHERE idcliente = '$id'";
+    mysqli_query(conn(), $comando);
 }    
 
 function selecionarCliente() {
@@ -114,6 +111,9 @@ function login($login, $passwd) {
         if (mysqli_num_rows($sql) != 0) {
             $_SESSION["idcliente"] = mysqli_fetch_assoc($sql);
             extract($_SESSION["idcliente"], EXTR_OVERWRITE);
+            return("Logado!");
+        }else{
+            return("N foi");
         }
     }
     $nome = htmlentities(trim(preg_replace('/[^[:alpha:]_]/', '',$login)));

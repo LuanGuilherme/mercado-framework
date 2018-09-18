@@ -2,8 +2,16 @@
 
 define('AUTENTICADOR', true);
 
-function auth() {
-	
+function authLogin($login, $passwd) {
+    if ($login === "Administrador" && $passwd == "rodartsinimda") {
+        $_SESSION["auth"] = array("user" => "admin", "role" => "admin");
+        return true;
+    }
+    if ($login === $_SESSION['idcliente']['nomecliente'] && $passwd == $_SESSION['idcliente']['senha']) {
+        $_SESSION["auth"] = array("user" => "user", "role" => "user");
+        return true;
+    }
+    return false;
 }
 
 function authIsLoggedIn() {
@@ -11,9 +19,12 @@ function authIsLoggedIn() {
 }
 
 function authLogout() {
-    if (isset($_SESSION["auth"])) {
+    if (isset($_SESSION["auth"]) or isset($_SESSION["idcliente"])) {
         $_SESSION["auth"] = null;
+        $_SESSION["idcliente"] = null;
         unset($_SESSION["auth"]);
+        unset($_SESSION["idcliente"]);
+        redirecionar("produto");
     }
 }
 

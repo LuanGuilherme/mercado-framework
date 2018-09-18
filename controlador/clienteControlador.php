@@ -19,32 +19,33 @@ function addCliente() {
     if (!empty($nome) && !empty($senha)) {
         adicionarCliente($nome, $email, $senha, $dia, $mes, $ano, $cpf, $estado, $cidade, $rua, $numero);
         redirecionar("produto");
-        alert("Foi");
     }else{
         exibir("usuario/formulario");
-        alert("N foi");
 
     }
 }
-
+/**
+user
+*/
 function removerCliente($id) {
     alert(deletarcliente($id));
-    redirecionar("visao/login");
+    logout($id);
+    alert("Removido com sucesso");
 }
 /**
-anon
+user
 */
 function editar($id) {
-    if (ehPost()) {
+    if (!empty($_POST)) {
         @$nome = $_POST["nome"];
         @$email = $_POST["email"];
         @$idade = (date("Y") - $_POST["ano"]);
-        @atualizarCliente($nome, $email, $idade, $_POST["senha"], $_POST["estado"], $_POST["Cidade"], $_POST["Rua"], $_POST["numero"]);
-        exibir("cliente/index");
+        @$endereco = $_POST["Cidade"]. " - ". $_POST["estado"];
+        @atualizarCliente($nome, $email, $idade, $endereco, $_POST["senha"], $_POST["cpf"], $id);
+        redirecionar("produto");
+        alert("Foi");
     } else {
-        @$dados['cliente'] = selecionarCliente();
-        @$dados['acao'] = "./cliente/editar/$id";
-        @exibir("cliente/formulario", $dados);
+        @exibir("usuario/formulario", $dados);
     }
 }
 
@@ -58,17 +59,23 @@ anon
 function entrar(){
     extract($_POST);
     if (!empty($nome) && !empty($senha)) {
-        print_r($nome." ".$senha);
-        login($nome, $senha);
-        redirecionar("produto");
-        alert("foi");
+        $msg = login($nome, $senha);
+        if ($_SESSION["idcliente"]) {
+            authLogin($nome, $senha);
+            redirecionar("produto");
+        }else{
+          exibir("login/login");
+          alert("N foi");  
+        }
     }else{
         exibir("login/login");
     }
 }
-
+/**
+user
+*/
 function logout() {
     authLogout();
     alert("deslogado com sucesso!");
-    redirecionar("usuario");
+    redirecionar("produto");
 }

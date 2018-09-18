@@ -129,7 +129,9 @@ li a:hover {
 	padding-right: 50px; 
 }
 /* Corpo */
-
+body{
+	padding-bottom: 20px;
+}
 /* Rodapé */
 footer{
 	height: 20px;
