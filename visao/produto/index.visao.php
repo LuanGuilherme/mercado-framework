@@ -16,9 +16,10 @@
 		</marquee>
 		<?php foreach ($produtos as $produto) : ?>
 
-		<?php if ($produto["idimg"] <= 12) : ?>
+		<?php if ($produto["idproduto"] <= 12) : ?>
 		<figure id="prod1">
-			<a href="detalharProduto.php?idproduto=<?=$produto['idproduto']?>&produto=<?=$produto['idimg'] ?>"><img src="<?=$produto['img'] ?>"></a>
+		<?php $nome = $produto["nomeproduto"] ?>
+			<a href='./produto/detalhar/<?=$nome?>'><img src="<?=$produto['img'] ?>"></a>
 			<figcaption><strong><?=$produto["nomeproduto"]?>:<?=$produto["preco"]?></strong> <br> <?=$produto["descproduto"]?></figcaption>
 		</figure>
 		<?php 

@@ -6,33 +6,57 @@ anon
 */
 function index(){
 	$produtos = selecionarProduto();
-	for ($i=0; $i < 20; $i++) { 
+	for ($i=0; $i < 12; $i++) { 
 		$produtos[$i]["img"] = selecionarImagem($produtos[$i]["idimg"]);
 	}
 	$produtos["produtos"] = $produtos;
 	exibir("produto/index", $produtos);
 }
-
-function addProduto($nomeproduto, $preco, $quantidade, $descproduto, $idimg) {
-	adicionarProduto($nomeproduto, $preco, $quantidade, $descproduto, $idimg);
-	exibir("index");
+/**
+admin
+*/
+function addProduto() {
+	if ($_POST) {
+		adicionarProduto($_POST["nomeproduto"], $_POST["preco"], $_POST["quantidade"], $_POST["descproduto"], $_POST["idimg"]);
+		index();
+	}else{
+		exibir("produto/adicionarProduto");
+	}
 }
-
-function deleteProduto ($nomeproduto) {
-	deletarProduto($nomeproduto);
-	exibir("index");
+/**
+admin
+*/
+function deleteProduto () {
+	if ($_POST) {
+		deletarProduto($_POST["nomeproduto"]);
+		index();
+	}else{
+		exibir("produto/deletar");
+	}
 }
-
-function upadateProduto ($nomeproduto, $preco, $quantidade, $descproduto, $idimg, $idproduto) {
-	alterarProduto($nomeproduto, $preco, $quantidade, $descproduto, $idimg, $idproduto);
-	exibir("index");
+/**
+admin
+*/
+function updateProduto () {
+	if (@$_POST["preco"]) {
+		alterarProduto($_POST["nomeproduto"], $_POST["preco"], $_POST["quantidade"], $_POST["descproduto"], $_POST["idimg"], $_POST["idproduto"]);
+		index();
+	}elseif (@$_POST["nome"]) {
+		$registro["registro"] = selecionarProdutoPorId($_POST["nome"]);
+		$_SESSION["condicional"] = 1;
+		exibir("produto/alterarProduto", $registro);
+	}else{
+		$_SESSION["condicional"] = 0;
+		exibir("produto/alterarProduto");
+	}
 }
 /**
 anon
 */
 function selectProduto () {
 	$produtos = selecionarProduto();
-	for ($i=0; $i < 20; $i++) { 
+	$qtd = (int) contarProdutos();
+	for ($i=0; $i < $qtd; $i++) { 
 		$produtos[$i]["img"] = selecionarImagem($produtos[$i]["idimg"]);
 	}
 	$produtos["produtos"] = $produtos;
@@ -48,5 +72,29 @@ anon
 */
 function contato (){
 	exibir("contato");
+}
+/**
+anon
+*/
+function detalhar ($nome) {
+	$registro["registro"] = selecionarProdutoPorId($nome);
+	$registro["registro"]["img"] = selecionarImagem($registro["registro"]["idimg"]);
+	exibir("produto/detalhar", $registro);
+}
+/**
+anon
+*/
+function carrinho ($nome) {
+	$registro["registro"] = selecionarProdutoPorId($nome);
+	print_r($registro);
+	$registro["registro"]["img"] = selecionarImagem($registro["registro"]["idimg"]);
+	exibir("produto/carrinho", $registro);
+}
+/**
+anon
+*/
+function busca ($nome) {
+	$name = pesquisa($nome);
+	exibir("produto/listar/$name");
 }
 ?>

@@ -1,37 +1,16 @@
-<?php
-session_start();
-require "controlador/produtoControlador";
-$sessao = 0;
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title>alterar</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="../estilo.css">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-</head>
 <body>
-	<?php if ($sessao <> 1) : ?>
+	<?php if ($_SESSION["condicional"] <> 1) : ?>
 	<div class="edit">
 		<h1>Alterar Produto</h1>
-		<form method="GET">
-			Digite o nome do produto a ser alterado: <input class="alterar" type="text" name="nomeproduto"> <br>
+		<form method="POST">
+			Digite o nome do produto a ser alterado: <input class="alterar" type="text" name="nome"> <br>
 			<input type="submit" id="botao" name="Enviar">
 		</form>
-			<?php
-			selectProdutorPerId(@$_GET["nomeproduto"]);
-			if ($registro) {
-				$sessao = 1;
-			}
-			?>
 	</div>
 	<?php endif; ?>
 
-
-	<?php if ($sessao == 1) : ?>
-		<form>
+	<?php if ($_SESSION["condicional"] == 1) : ?>
+		<form method="POST">
 			<input type="hidden" name="idproduto" 
 				value="<?php echo $registro["idproduto"]; ?>">
 
@@ -73,9 +52,6 @@ $sessao = 0;
 				<br>	
 			<button type="submit">Enviar</button>
 		</form>
-		<?php
-		updateProduto($_POST["nomeproduto"], $_POST["preco"], $_POST["quantidade"], $_POST["descproduto"], $_POST["idimg"], $_POST["idproduto"]);
-		?>
 	<?php endif; ?>
 </body>
 </html>

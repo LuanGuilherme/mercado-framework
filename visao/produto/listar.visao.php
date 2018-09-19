@@ -10,7 +10,8 @@
 		<?php foreach ($produtos as $produto) : ?>
 
 		<figure id="prod1">
-			<a href="detalharProduto.php?idproduto=<?=$produto['idproduto']?>&produto=<?=$produto['idimg'] ?>"><img src="<?=$produto['img'] ?>"></a>
+		<?php $nome = $produto["nomeproduto"] ?>
+			<a href='./produto/detalhar/<?=$nome?>'><img src="<?=$produto['img'] ?>"></a>
 			<figcaption><strong><?=$produto["nomeproduto"]?>:<?=$produto["preco"]?></strong> <br> <?=$produto["descproduto"]?></figcaption>
 		</figure>
 		<?php endforeach; ?>

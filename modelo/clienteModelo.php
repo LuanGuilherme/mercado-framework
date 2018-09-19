@@ -111,15 +111,14 @@ function login($login, $passwd) {
         if (mysqli_num_rows($sql) != 0) {
             $_SESSION["idcliente"] = mysqli_fetch_assoc($sql);
             extract($_SESSION["idcliente"], EXTR_OVERWRITE);
-            return("Logado!");
-        }else{
-            return("N foi");
+            $_SESSION["idcliente"]["nomecliente"] = $nome;
         }
     }
     $nome = htmlentities(trim(preg_replace('/[^[:alpha:]_]/', '',$login)));
     $senha = htmlentities(trim($passwd));
     if ($nome == "Administrador"  && $senha == "rodartsinimda") {
-        $_SESSION["adm"] = true;
+        $_SESSION["adm"] = true; 
+        authLogin($nome, $senha);
     }else{
         logar($nome, $senha);
     }   

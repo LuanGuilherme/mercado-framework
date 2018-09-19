@@ -22,8 +22,10 @@ function authLogout() {
     if (isset($_SESSION["auth"]) or isset($_SESSION["idcliente"])) {
         $_SESSION["auth"] = null;
         $_SESSION["idcliente"] = null;
+        $_SESSION["adm"] = null;
         unset($_SESSION["auth"]);
         unset($_SESSION["idcliente"]);
+        unset($_SESSION["adm"]);
         redirecionar("produto");
     }
 }

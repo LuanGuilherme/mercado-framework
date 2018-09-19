@@ -1,14 +1,4 @@
-<?php require 'produtoControlador.php'; ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Formulário Produto</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="estilo.css">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-</head>
 <body>
-<?php require "cabecalho.php";  ?>
 <div class="edit">
 	<h1>Adicionar Produto</h1> <br>
 	<form action="" method="POST">
@@ -46,7 +36,4 @@
 		<button id="botao" type="submit">Enviar</button>
 	</form>
 </div>
-<?php require "rodape.php"; ?>
 </body>
-</html>
-<?php @adicionarProduto($_POST["nomeproduto"], $_POST["preco"], $_POST["quantidade"], $_POST["descproduto"], $_POST["idimg"]); ?>

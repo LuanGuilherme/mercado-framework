@@ -43,6 +43,7 @@ function editar($id) {
         @$endereco = $_POST["Cidade"]. " - ". $_POST["estado"];
         @atualizarCliente($nome, $email, $idade, $endereco, $_POST["senha"], $_POST["cpf"], $id);
         redirecionar("produto");
+        $_SESSION["idcliente"]["nomecliente"] = $nome;
         alert("Foi");
     } else {
         @exibir("usuario/formulario", $dados);
@@ -63,7 +64,9 @@ function entrar(){
         if ($_SESSION["idcliente"]) {
             authLogin($nome, $senha);
             redirecionar("produto");
-        }else{
+        }elseif ($_SESSION["adm"]){
+            redirecionar("produto");
+        }else{    
           exibir("login/login");
           alert("N foi");  
         }
@@ -72,10 +75,10 @@ function entrar(){
     }
 }
 /**
-user
+anon
 */
 function logout() {
     authLogout();
-    alert("deslogado com sucesso!");
+    alert("Deslogado com sucesso! ");
     redirecionar("produto");
 }
