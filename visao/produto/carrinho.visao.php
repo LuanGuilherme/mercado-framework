@@ -7,8 +7,6 @@ setcookie("$img", $registro["img"], time()+3600);
 $_SESSION["feio"][$cont] = $registro;
 $_SESSION["cont"] += 1;
 $cont = $_SESSION["cont"];
-print_r($_SESSION["feio"]);
-print_r($cont);
 ?>
 <body>
 	<div class="carro">
