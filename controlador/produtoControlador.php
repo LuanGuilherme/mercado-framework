@@ -86,7 +86,6 @@ anon
 */
 function carrinho ($nome) {
 	$registro["registro"] = selecionarProdutoPorId($nome);
-	print_r($registro);
 	$registro["registro"]["img"] = selecionarImagem($registro["registro"]["idimg"]);
 	exibir("produto/carrinho", $registro);
 }
