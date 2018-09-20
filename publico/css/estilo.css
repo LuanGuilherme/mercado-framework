@@ -1,4 +1,4 @@
-﻿/* Reset */
+/* Reset */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -137,6 +137,7 @@ footer{
 	height: 20px;
 	padding-top: 45px;
 	padding-bottom: 45px; 
+	bottom: 0;
 	background-color: grey;
 	text-align: center;
 	clear: both;
@@ -189,7 +190,7 @@ footer{
 	font-size: 25px;	
 }
 #img{
-	height: 20%;
+	height: 22%;
 	width: 20%;
 	border-style: solid;
 	border-color: black;
@@ -203,8 +204,9 @@ footer{
 	margin: 2% 0% 1% 10%;
 }
 #comprar{
-	height: 40%; 
+	height: 9%; 
 	width: 50%;
+	margin-bottom: 3%;
 }
 #valor{
 	float: right;
