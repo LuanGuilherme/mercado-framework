@@ -12,6 +12,6 @@
         <br>
         <label for="msg">Mensagem: </label>
         <textarea id="msg" rows="10" cols="50" name="msg"></textarea><br>
-        <a href="./produto/produto/email/<?= $_POST['msg'] ?>">Enviar</a>
+        <a href="./produto/produto/email/<?= @$_POST['msg'] ?>">Enviar</a>
     </form>
 </div>
