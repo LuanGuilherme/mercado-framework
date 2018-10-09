@@ -116,9 +116,9 @@ function busca($busca) {
 /**
   anon
  */
-function tirar() {
-    $_SESSION["feio"] = null;
-    unset($_SESSION["feio"]);
+function tirar($indice) {
+    $_SESSION["feio"][$indice] = null;
+    unset($_SESSION["feio"][$indice]);
     exibir("produto/carrinho");
 }
 
