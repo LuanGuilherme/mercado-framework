@@ -1,28 +1,21 @@
 <?php
 error_reporting(0);
-ini_set(“display_errors ”, 0);
-if (!isset($_SESSION["cont"])) {
-    $_SESSION["cont"] = 0;
-    $cont = $_SESSION["cont"];
-} else {
-    $_SESSION["cont"] += 1;
-    $cont = $_SESSION["cont"];
-}
+ini_set("display_errors", 0);
 
 if ($reg) {
-    $_SESSION["feio"][$cont] = $reg;
+    $_SESSION["feio"][] = $reg;
 }
 ?>
 <body>
     <div class="carro">
         <h1>Carrinho</h1>
         <?php
-        foreach ($_SESSION["feio"] as $exibe) :
+        foreach ($_SESSION["feio"] as $indice => $exibe) :
             $printa = $exibe["img"];
             ?>
             <img src="<?= $printa ?>"> 
             <p><?= $exibe["nomeproduto"] . " " . $exibe["preco"]; ?></p>
+            <a href="./produto/tirar/<?=$indice?>">Remover produto</a>
         <?php endforeach; ?>
-        <a href="./produto/produto/tirar/?>">Esvaziar carrinho</a>
     </div>
 </body>
