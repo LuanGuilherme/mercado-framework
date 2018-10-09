@@ -11,4 +11,4 @@ require_once 'bibliotecas/alert.php';
 require_once 'bibliotecas/auth.php';
 
 define('CONTROLADOR_PADRAO', 'cliente');
-define('BASE_URL', 'http://localhost/framework_zoada/');
+define('BASE_URL', 'http://localhost/Framework-noopMVC/');
