@@ -12,17 +12,22 @@ function deletarProduto ($nomeproduto) {
 	mysqli_query(conn(), $comando); 
 }
 
-function adicionarProduto ($nomeproduto, $preco, $quantidade, $descproduto, $idimg) {
-	$img = mysqli_fetch_assoc(mysqli_query(conn(), "SELECT img FROM imagens WHERE idimg='$idimg'"));
-	$img = $img["img"];
-	$comando = "INSERT INTO produtos (idproduto, nomeproduto, preco, quantidade, descproduto, idimg)
-		values (null, '$nomeproduto', '$preco', '$quantidade', '$descproduto', '$idimg')";
-	mysqli_query(conn(), $comando);
+function adicionarProduto ($nomeproduto, $preco, $quantidade, $descproduto, $img, $idcategoria) {
+        $comando1 = "INSERT INTO imagens (idimg, img)
+                values (null, '$img')";
+        mysqli_query(conn(), $comando1);
+        $pegarIdimg = "SELECT idimg FROM imagens WHERE img = '$img'";
+        $retorno = mysqli_fetch_assoc(mysqli_query(conn(), $pegarIdimg));
+        $idimg = $retorno["idimg"];
+     
+	$comando2 = "INSERT INTO produtos (idproduto, nomeproduto, preco, quantidade, descproduto, idimg, idcategoria)
+		values (null, '$nomeproduto', '$preco', '$quantidade', '$descproduto', '$idimg', '$idcategoria')";
+	mysqli_query(conn(), $comando2);
 }
 
-function alterarProduto ($nomeproduto, $preco, $quantidade, $descproduto, $idimg, $idproduto) {
+function alterarProduto ($nomeproduto, $preco, $quantidade, $descproduto, $idimg, $idproduto, $idcategoria) {
 		$comando = "UPDATE produtos
-		SET nomeproduto= '$nomeproduto',preco= '$preco',quantidade= '$quantidade',descproduto= '$descproduto',idimg= '$idimg'
+		SET nomeproduto= '$nomeproduto',preco= '$preco',quantidade= '$quantidade',descproduto= '$descproduto',idimg= '$idimg', idcategoria= '$idcategoria'
 		WHERE idproduto= '$idproduto'";
 		$retorno = mysqli_query(conn(), $comando);	
 } 

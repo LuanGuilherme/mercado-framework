@@ -20,7 +20,12 @@ function index() {
  */
 function addProduto() {
     if ($_POST) {
-        adicionarProduto($_POST["nomeproduto"], $_POST["preco"], $_POST["quantidade"], $_POST["descproduto"], $_POST["idimg"]);
+        $nome = 'publico/img/' . $_FILES['img']['name'];
+        $destino = 'publico/img/' . $_FILES['img']['name'];
+        $arquivo_tmp = $_FILES['img']['tmp_name'];
+        move_uploaded_file( $arquivo_tmp, $destino  );
+        
+        adicionarProduto($_POST["nomeproduto"], $_POST["preco"], $_POST["quantidade"], $_POST["descproduto"], $nome, $_POST["Categoria"]);
         index();
     } else {
         exibir("produto/adicionarProduto");
@@ -44,7 +49,7 @@ function deleteProduto() {
  */
 function updateProduto() {
     if (@$_POST["preco"]) {
-        alterarProduto($_POST["nomeproduto"], $_POST["preco"], $_POST["quantidade"], $_POST["descproduto"], $_POST["idimg"], $_POST["idproduto"]);
+        alterarProduto($_POST["nomeproduto"], $_POST["preco"], $_POST["quantidade"], $_POST["descproduto"], $_POST["idimg"], $_POST["idproduto"], $_POST["idcategoria"]);
         index();
     } elseif (@$_POST["nome"]) {
         $registro["registro"] = selecionarProdutoPorId($_POST["nome"]);
