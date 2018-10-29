@@ -22,11 +22,11 @@ if ($reg) {
             <tr> 
                 <img src="<?= $printa ?>"><td><a href="./produto/tirar/<?=$indice?>">Remover produto</a></td>
                 <td><?= $exibe["nomeproduto"]; ?></td>
-                <td><?= $exibe["qtd"]; ?></td>
+                <td><form method="POST"><input value="<?= $exibe['qtd'] ?>" type="nuber" name="qtd"></input></form></td>
                 <td><?= $exibe["preco"]; ?></td>
             </tr>
         </table>
-
+        
         <?php endforeach; ?>
     </div>
 </body>
