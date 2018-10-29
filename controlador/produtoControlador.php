@@ -110,7 +110,7 @@ function carrinho($nome) {
         $registro["reg"] = selecionarProdutoPorId($nome);
         $registro["reg"]["img"] = selecionarImagem($registro["reg"]["idimg"]);
         $registro["reg"]["qtd"] = 1;
-
+        
         if (@$_SESSION["feio"]) {
             foreach ($_SESSION["feio"] as $indice => $aux) {
                 if ($nome == $aux["nomeproduto"]) {
@@ -120,6 +120,8 @@ function carrinho($nome) {
                 }
             }
         }
+        @$_SESSION["total"] += $registro["reg"]["preco"];
+        
         exibir("produto/carrinho", $registro);
     } else {
         exibir("produto/carrinho");
