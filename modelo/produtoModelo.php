@@ -25,12 +25,19 @@ function adicionarProduto ($nomeproduto, $preco, $quantidade, $descproduto, $img
 	mysqli_query(conn(), $comando2);
 }
 
-function alterarProduto ($nomeproduto, $preco, $quantidade, $descproduto, $idimg, $idproduto, $idcategoria) {
-		$comando = "UPDATE produtos
+function alterarProduto($nomeproduto, $preco, $quantidade, $descproduto, $img, $idproduto, $idcategoria) {
+    $comando1 = "INSERT INTO imagens (idimg, img)
+                values (null, '$img')";
+    mysqli_query(conn(), $comando1);
+    $pegarIdimg = "SELECT idimg FROM imagens WHERE img = '$img'";
+    $retorno1 = mysqli_fetch_assoc(mysqli_query(conn(), $pegarIdimg));
+    $idimg = $retorno1["idimg"];
+    
+    $comando2 = "UPDATE produtos
 		SET nomeproduto= '$nomeproduto',preco= '$preco',quantidade= '$quantidade',descproduto= '$descproduto',idimg= '$idimg', idcategoria= '$idcategoria'
 		WHERE idproduto= '$idproduto'";
-		$retorno = mysqli_query(conn(), $comando);	
-} 
+    $retorno2 = mysqli_query(conn(), $comando2);
+}
 
 function selecionarProduto () {
 	$comando = "SELECT * FROM produtos";
