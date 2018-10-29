@@ -246,6 +246,10 @@ footer{
     border-width: 1px;
     width: 20%;
 }
+
+#total {
+    float: right;
+}
 /* Cadastro */
 .cadastro h1{
 	margin-left: 7%;
