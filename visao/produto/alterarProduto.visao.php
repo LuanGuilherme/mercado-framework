@@ -10,7 +10,7 @@
     <?php endif; ?>
 
     <?php if ($_SESSION["condicional"] == 1) : ?>
-        <form method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="idproduto" 
                    value="<?php echo $registro["idproduto"]; ?>">
 
@@ -41,4 +41,3 @@
         </form>
     <?php endif; ?>
 </body>
-</html>

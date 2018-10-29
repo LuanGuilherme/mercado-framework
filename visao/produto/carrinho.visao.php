@@ -11,11 +11,22 @@ if ($reg) {
         <h1>Carrinho</h1>
         <?php
         foreach ($_SESSION["feio"] as $indice => $exibe) :
-            $printa = $exibe["img"];
-            ?>
-            <img src="<?= $printa ?>"> 
-            <p><?= $exibe["nomeproduto"] . " " . $exibe["preco"]; ?></p>
-            <a href="./produto/tirar/<?=$indice?>">Remover produto</a>
+            $printa = $exibe["img"];?>
+        <table>
+            <tr>
+                <th>Remover do carrinho</th>
+                <th>Nome</th>
+                <th>Quantidade</th>
+                <th>Preço</th>
+            </tr>
+            <tr> 
+                <img src="<?= $printa ?>"><td><a href="./produto/tirar/<?=$indice?>">Remover produto</a></td>
+                <td><?= $exibe["nomeproduto"]; ?></td>
+                <td><?= $exibe["qtd"]; ?></td>
+                <td><?= $exibe["preco"]; ?></td>
+            </tr>
+        </table>
+
         <?php endforeach; ?>
     </div>
 </body>
