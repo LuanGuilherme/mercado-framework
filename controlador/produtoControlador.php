@@ -3,6 +3,9 @@
 require 'modelo/produtoModelo.php';
 require 'modelo/imagemModelo.php';
 
+//error_reporting(0);
+//ini_set("display_errors", 0);
+
 /**
   anon
  */
@@ -106,14 +109,16 @@ function carrinho($nome) {
     if ($nome) {
         $registro["reg"] = selecionarProdutoPorId($nome);
         $registro["reg"]["img"] = selecionarImagem($registro["reg"]["idimg"]);
-        foreach ($_SESSION["feio"]["nomeproduto"] as $aux) {
-            if ($nome = $aux) {
-                $registro["reg"]["qtd"] += 1;
-                $cont = 1;
+        $registro["reg"]["qtd"] = 1;
+
+        if (@$_SESSION["feio"]) {
+            foreach ($_SESSION["feio"] as $indice => $aux) {
+                if ($nome == $aux["nomeproduto"]) {
+                    $registro["reg"]["qtd"] = 1 + $aux["qtd"];
+                    $_SESSION["feio"][$indice] = null;
+                    unset($_SESSION["feio"][$indice]);
+                }
             }
-        }
-        if ($cont <> 1) {
-            $registro["reg"]["qtd"] = 1;
         }
         exibir("produto/carrinho", $registro);
     } else {
