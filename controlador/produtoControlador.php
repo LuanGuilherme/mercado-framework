@@ -49,7 +49,12 @@ function deleteProduto() {
  */
 function updateProduto() {
     if (@$_POST["preco"]) {
-        alterarProduto($_POST["nomeproduto"], $_POST["preco"], $_POST["quantidade"], $_POST["descproduto"], $_POST["idimg"], $_POST["idproduto"], $_POST["idcategoria"]);
+        $nome = 'publico/img/' . $_FILES['img']['name'];
+        $destino = 'publico/img/' . $_FILES['img']['name'];
+        $arquivo_tmp = $_FILES['img']['tmp_name'];
+        move_uploaded_file( $arquivo_tmp, $destino  );
+        
+        alterarProduto($_POST["nomeproduto"], $_POST["preco"], $_POST["quantidade"], $_POST["descproduto"], $nome, $_POST["idproduto"], $_POST["Categoria"]);
         index();
     } elseif (@$_POST["nome"]) {
         $registro["registro"] = selecionarProdutoPorId($_POST["nome"]);
@@ -101,6 +106,15 @@ function carrinho($nome) {
     if ($nome) {
         $registro["reg"] = selecionarProdutoPorId($nome);
         $registro["reg"]["img"] = selecionarImagem($registro["reg"]["idimg"]);
+        foreach ($_SESSION["feio"]["nomeproduto"] as $aux) {
+            if ($nome = $aux) {
+                $registro["reg"]["qtd"] += 1;
+                $cont = 1;
+            }
+        }
+        if ($cont <> 1) {
+            $registro["reg"]["qtd"] = 1;
+        }
         exibir("produto/carrinho", $registro);
     } else {
         exibir("produto/carrinho");
