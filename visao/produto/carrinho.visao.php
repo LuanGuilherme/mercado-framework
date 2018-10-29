@@ -28,5 +28,14 @@ if ($reg) {
         </table>
         
         <?php endforeach; ?>
+        
+        <table id="total">
+            <tr>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td><?= $_SESSION['total'] ?></td>
+            </tr>
+        </table>
     </div>
 </body>
