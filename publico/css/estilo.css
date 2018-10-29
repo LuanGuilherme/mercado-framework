@@ -228,11 +228,9 @@ footer{
 	border-style: solid;
 	border-color: black;
 	border-width: 8px;
+        display: inline;
 }
-.carro p{
-	margin-left: 60%;
-	font-size: 20px;
-}
+
 .carro input{
 	margin-left: 18.5%;
 }
@@ -240,6 +238,13 @@ footer{
 	text-align: center;
 	margin-top: 1%;
 	font-size: 26px;
+}
+
+.carro tr td{
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    width: 20%;
 }
 /* Cadastro */
 .cadastro h1{
