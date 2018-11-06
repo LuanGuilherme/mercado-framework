@@ -23,7 +23,7 @@ if ($reg) {
                 <img src="<?= $printa ?>"><td><a href="./produto/tirar/<?=$indice?>">Remover produto</a></td>
                 <td><?= $exibe["nomeproduto"]; ?></td>
                 <td><form method="POST"><input value="<?= $exibe['qtd'] ?>" type="nuber" name="qtd"></input></form></td>
-                <td><?= $exibe["preco"]; ?></td>
+                <td>R$: <?= $exibe["preco"]; ?></td>
             </tr>
         </table>
         
@@ -34,9 +34,9 @@ if ($reg) {
                 <th>Total</th>
             </tr>
             <tr>
-                <td><?= $_SESSION['total'] ?></td>
+                <td>R$ <?= $_SESSION['total'] ?></td>
             </tr>
         </table>
-        <a href="./pedido/index">Finalizar Pedido</a>
+        <a href="./pedido/addPedido/<?=$exibe['nomeproduto']?>/<?=$exibe['qtd']?>/<?=$exibe['preco']?>">Finalizar Pedido</a>
     </div>
 </body>
