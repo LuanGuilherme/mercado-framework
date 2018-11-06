@@ -37,5 +37,6 @@ if ($reg) {
                 <td><?= $_SESSION['total'] ?></td>
             </tr>
         </table>
+        <a href="./pedido/index">Finalizar Pedido</a>
     </div>
 </body>
