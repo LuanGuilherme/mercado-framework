@@ -9,7 +9,6 @@ function conn() {
     fclose($text);
     
     $cnx = mysqli_connect($dados[0], $dados[1], $dados[2], $dados[3]);
-    print_r($dados);
     if (!$cnx) die('Deu errado a conexao!');
     return $cnx;
 }
