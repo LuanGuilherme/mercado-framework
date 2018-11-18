@@ -9,6 +9,7 @@
 		<img id="logo" title="Mercado" src="./publico/img/logo.png">
 		<li><a href="./produto">Home</a></li>
 		<li><a href="./produto/selectProduto">Todos os produtos</a></li>
+                <?= @$_SESSION["adm"] == "Admin" ? "<li><a href='./cliente/admin'>Admin</a></li>": ""; ?>
 		<?= @$_SESSION["adm"] == "Admin" ? "<li><a href='./produto/addProduto'>Adicionar produto</a></li>": ""; ?>
 		<?= @$_SESSION["adm"] == "Admin" ? "<li><a href='./produto/updateProduto'>Alterar produto</a></li>": ""; ?>
 		<?= @$_SESSION["adm"] == "Admin" ? "<li><a href='./produto/deleteProduto'>Deletar produto</a></li>": ""; ?>

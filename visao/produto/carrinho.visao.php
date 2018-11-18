@@ -37,6 +37,6 @@ if ($reg) {
                 <td>R$ <?= $_SESSION['total'] ?></td>
             </tr>
         </table>
-        <a href="./pedido/addPedido/<?=$exibe['qtd']?>">Finalizar Pedido</a>
+        <a href="./pedido/index/<?=$exibe['qtd']?>/<?=$exibe['nomeproduto']?>">Finalizar Pedido</a>
     </div>
 </body>

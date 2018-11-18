@@ -82,3 +82,7 @@ function logout() {
     alert("Deslogado com sucesso! ");
     redirecionar("produto");
 }
+
+function admin(){
+    exibir("usuario/admin");
+}
