@@ -82,7 +82,23 @@ function logout() {
     alert("Deslogado com sucesso! ");
     redirecionar("produto");
 }
-
-function admin(){
+/**
+admin
+*/
+function admin() {
     exibir("usuario/admin");
+}
+/**
+admin
+*/
+function qtdProdutosEstoque (){
+    $array["produtos"] = produtosEstoque();
+    exibir("usuario/produtosEstoque", $array);
+}
+/**
+admin
+*/
+function categoriaProdutos (){
+    $array["produtos"] = produtosCategoria();
+    exibir("usuario/produtosCategoria", $array);
 }
