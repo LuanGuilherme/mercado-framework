@@ -1,14 +1,15 @@
 <?php
 
 function adicionarCliente() {
-    function cadastra ($nome, $email, $idade, $endereco, $senha, $cpf){
+    function cadastra ($nome, $email, $idade, $rua, $cidade, $estado, $numero, $senha, $cpf){
         $busca = "SELECT idcliente FROM clientes";
-        if (mysqli_query(conn(), $busca) == NULL) {
-            $sql = "INSERT INTO clientes(idcliente, nomecliente, email, idade, endereco, senha, cpf)
-        values (1 , '$nome', '$email', '$idade', '$endereco', '$senha', '$cpf')";
+        if (mysqli_fetch_assoc(mysqli_query(conn(), $busca)) == NULL) {
+            alert($nome.$email.$idade.$rua.$cidade.$estado.$numero.$senha.$cpf);
+            $sql = "INSERT INTO clientes(idcliente, nomecliente, email, idade, rua, cidade, estado, numero, senha, cpf)
+        values (1 , '$nome', '$email', '$idade', '$rua', '$cidade', '$estado', '$numero', '$senha', '$cpf')";
         }else{
-            $sql = "INSERT INTO clientes(nomecliente, email, idade, endereco, senha, cpf)
-        values ('$nome', '$email', '$idade', '$endereco', '$senha', '$cpf')";
+            $sql = "INSERT INTO clientes(nomecliente, email, idade, rua, cidade, estado, numero, senha, cpf)
+        values ('$nome', '$email', '$idade', '$rua', '$cidade', '$estado', '$numero', '$senha', '$cpf')";
         }
         mysqli_query(conn(), $sql);
     }
@@ -45,11 +46,11 @@ function adicionarCliente() {
             echo "<script>alert('Preencha o campo Estado!');</script>";
             $count += 1;
         }
-        if (empty($_POST["Cidade"])){
+        if (empty($_POST["cidade"])){
             echo "<script>alert('Preencha o campo Cidade!');</script>";
             $count += 1;
         }
-        if (empty($_POST["Rua"])){
+        if (empty($_POST["rua"])){
             echo "<script>alert('Preencha o campo Rua!');</script>";
             $count += 1;
         }
@@ -61,7 +62,7 @@ function adicionarCliente() {
             echo "<script>alert('Preencha o campo Cpf com números inteiros!');</script>";
             $count += 1;
         }
-        if (!$_POST["Sexo"]){
+        if (!$_POST["sexo"]){
             echo "<script>alert('Preencha o campo Sexo!');</script>";
             $count += 1;
         }
@@ -69,10 +70,13 @@ function adicionarCliente() {
             $nome = $_POST["nome"];
             $email = $_POST["email"];
             $idade = (date("Y") - $_POST["ano"]);
-            $endereco = $_POST["Cidade"]. " - ". $_POST["estado"];
+            $rua = $_POST["rua"];
+            $cidade = $_POST["cidade"];
+            $estado = $_POST["estado"];
+            $numero = $_POST["numero"];
             $senha = $_POST["senha"];
             $cpf = $_POST["cpf"];
-            cadastra ($nome, $email, $idade, $endereco, $senha, $cpf);
+            cadastra ($nome, $email, $idade, $rua, $cidade, $estado, $numero, $senha, $cpf);
         }
     }
 }
@@ -117,9 +121,32 @@ function login($login, $passwd) {
     $nome = htmlentities(trim(preg_replace('/[^[:alpha:]_]/', '',$login)));
     $senha = htmlentities(trim($passwd));
     if ($nome == "Administrador"  && $senha == "rodartsinimda") {
-        $_SESSION["adm"] = true; 
+        $_SESSION["adm"] = true;
+        $_SESSION["idcliente"]["nomecliente"] = $nome;
         authLogin($nome, $senha);
     }else{
         logar($nome, $senha);
     }   
+}
+
+function produtosEstoque() {
+    $sql = "SELECT * FROM loja_produtos_em_estoque";
+    $help = mysqli_query(conn(), $sql);
+    while($registro = mysqli_fetch_assoc($help)) {
+		$retorno[] = $registro;
+	}
+    return($retorno);
+}
+
+function produtosCategoria(){
+    $sql = "SELECT * FROM loja_produtos_por_categoria";
+    $help = mysqli_query(conn(), $sql);
+    while($registro = mysqli_fetch_assoc($help)) {
+		$retorno[] = $registro;
+	}
+    return($retorno);
+}
+
+function pedidosEntreDatas ($data1, $data2) {
+    $sql = "CALL pedidos_intervalo_datas(@'$data1', @'$data2')";
 }
