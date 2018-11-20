@@ -57,11 +57,11 @@
 			</select>
 						
 			<label for="Cidade">Cidade: </label>
-			<input id="Cidade" type="text" name="Cidade" required="required">
+			<input id="Cidade" type="text" name="cidade" required="required">
 			<br>
 			<br>
 			<label for="Rua">Rua: </label>
-			<input id="Rua" type="text" name="Rua" required="required">
+			<input id="Rua" type="text" name="rua" required="required">
 			
 			<label for="numero">Número: </label>
 			<input id="Número" type="number" name="numero" required="required">
