@@ -10,9 +10,6 @@
 		<li><a href="./produto">Home</a></li>
 		<li><a href="./produto/selectProduto">Todos os produtos</a></li>
                 <?= @$_SESSION["adm"] == "Admin" ? "<li><a href='./cliente/admin'>Admin</a></li>": ""; ?>
-		<?= @$_SESSION["adm"] == "Admin" ? "<li><a href='./produto/addProduto'>Adicionar produto</a></li>": ""; ?>
-		<?= @$_SESSION["adm"] == "Admin" ? "<li><a href='./produto/updateProduto'>Alterar produto</a></li>": ""; ?>
-		<?= @$_SESSION["adm"] == "Admin" ? "<li><a href='./produto/deleteProduto'>Deletar produto</a></li>": ""; ?>
 		<?= @$_SESSION["adm"] == "Admin" ? "": "<li><a href='./produto/contato'>Contato</a></li>"; ?>
 		<?= empty(@$_SESSION["idcliente"]["nomecliente"] or @$_SESSION["adm"]) ? "<li><a href='./cliente/addCliente'>Cadastrar</a></li>": ""; ?>
 		<?php if (@!$_SESSION["adm"]) : ?>
@@ -23,7 +20,7 @@
 		$nome = @$_SESSION["idcliente"]['nomecliente'];
 		$id = @$_SESSION["idcliente"]['idcliente'];
 		?>
-		<li id="user"><?= empty(@$_SESSION["idcliente"]["nomecliente"]) ? "<a href='./cliente/entrar'>Logar</a><!--" : "<a href='./cliente/editar'>$nome</a>"; ?>
+		<li id="user"><?= !@$_SESSION["auth"] ? "<a href='./cliente/entrar'>Logar</a><!--" : "<a href='./cliente/editar'>$nome</a>"; ?>
 			<ul id="sub">
 				<?= @!isset($_SESSION["adm"]) ? "" : "<li><a href='./cliente/editar/$id'>Editar</a></li>"; ?>
 				<?= @isset($_SESSION["adm"]) ? "" : "<li><a href='./cliente/removerCliente/$id'>Apagar conta</a></li>"; ?>
