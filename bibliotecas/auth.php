@@ -19,7 +19,7 @@ function authIsLoggedIn() {
 }
 
 function authLogout() {
-    if (isset($_SESSION["auth"]) or isset($_SESSION["idcliente"])) {
+    if (isset($_SESSION["auth"]) or isset($_SESSION["idcliente"]) or isset($_SESSION["adm"])) {
         $_SESSION["auth"] = null;
         $_SESSION["idcliente"] = null;
         $_SESSION["adm"] = null;
