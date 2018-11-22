@@ -1,7 +1,7 @@
 <?php
 
 function conn() {
-    $text = fopen("C:/wamp64/www/Framework-noopMVC/bibliotecas/dados.txt", "r");
+    $text = fopen("D:/wamp64/www/Framework-noopMVC/bibliotecas/dados.txt", "r");
     
     while (!feof($text)) {
         $dados[] = trim(fgets($text));

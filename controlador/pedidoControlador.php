@@ -27,6 +27,9 @@ function calcularTotalPedido(){
     $_SESSION['total'] = $_SESSION['total'] - $valorcupom;
 }
 
-function addCupom($nomecupom, $valorcupom){
+function addCupom(){
+    $nomecupom = $_POST["nomecupom"];
+    $valorcupom = $_POST["valorcupom"];
     adicionarCupom($nomecupom, $valorcupom);
+    exibir("usuario/admin");
 }

@@ -21,3 +21,9 @@ function pegarValorcupomPorNomecupom($nomecupom){
     $retorno = mysqli_query(conn(), $comando);
     return ($retorno);
 }
+
+function adicionarCupom($nomecupom, $valorcupom){
+    $comando = "INSERT INTO cupom (nomecupom, valorcupom)
+               values ('$nomecupom', $valorcupom)";
+    mysqli_query(conn(), $comando);
+}

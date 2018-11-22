@@ -12,7 +12,7 @@
 <a class="admMudar" href='./cliente/vendasIntervaloDatas'>Pedidos por intervalo de datas</a>
 
 <h1 id="tituadmProduto">Cupons</h1>
-<form action="./pedido/addPedido" method="POST">
+<form action="./pedido/addCupom" method="POST">
     <label for="nomecupom">Digite o nome do cupom a ser criado:</label>
     <input class="form" type="text" name="nomecupom"> 
     
