@@ -102,3 +102,9 @@ function categoriaProdutos (){
     $array["produtos"] = produtosCategoria();
     exibir("usuario/produtosCategoria", $array);
 }
+/**
+admin
+*/
+function vendasIntervaloDatas ($data1, $data2) {
+    pedidosEntreDatas($data1, $data2);
+}

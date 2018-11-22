@@ -29,5 +29,4 @@ function calcularTotalPedido(){
 
 function addCupom($nomecupom, $valorcupom){
     adicionarCupom($nomecupom, $valorcupom);
-    exibir
 }

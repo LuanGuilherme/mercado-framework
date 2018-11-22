@@ -9,6 +9,7 @@
 <h2 id="tituadmProduto">Relatórios</h2>
 <a class="admMudar" href='./cliente/qtdProdutosEstoque'>Produtos e sua quantidade em estoque</a>
 <a class="admMudar" href='./cliente/categoriaProdutos'>Produtos e sua categoria</a>
+<a class="admMudar" href='./cliente/vendasIntervaloDatas'>Pedidos por intervalo de datas</a>
 
 <h1 id="tituadmProduto">Cupons</h1>
 <form action="./pedido/addPedido" method="POST">
