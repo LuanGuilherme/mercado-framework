@@ -17,7 +17,7 @@ anon
 function addCliente() {
     extract($_POST);
     if (!empty($nome) && !empty($senha)) {
-        adicionarCliente($nome, $email, $senha, $dia, $mes, $ano, $cpf, $estado, $cidade, $rua, $numero);
+        adicionarCliente();
         redirecionar("produto");
     }else{
         exibir("usuario/formulario");
@@ -105,6 +105,37 @@ function categoriaProdutos (){
 /**
 admin
 */
-function vendasIntervaloDatas ($data1, $data2) {
-    pedidosEntreDatas($data1, $data2);
+function vendasIntervaloDatas() {
+    if (!empty($_POST)) {
+        $data1 = $_POST['ano1'] . "-" . $_POST['mes1'] . "-" . $_POST['dia1'];
+        $data2 = $_POST['ano2'] . "-" . $_POST['mes2'] . "-" . $_POST['dia2'];
+        $array["produtos"] = pedidosEntreDatas($data1, $data2);
+        exibir("usuario/intervaloDatas", $array);
+    } else {
+        exibir("usuario/vendasIntervaloDatas");
+    }
+}
+/**
+admin
+*/
+function vendasMunicipio () {
+     if (!empty($_POST)) {
+        $municipio = $_POST["cidade"];
+        $array["produtos"] = pedidosMunicipio($municipio);
+        exibir("usuario/vendasPorMunicipio", $array);
+    } else {
+        exibir("usuario/vendasMunicipio");
+    }   
+}
+/**
+admin
+*/
+function vendasPeriodo () {
+    if (!empty($_POST)) {
+        $data = $_POST['ano'] . "-" . $_POST['mes'] . "-" . $_POST['dia'];
+        $array["produtos"] = pedidosPeriodo($data);
+        exibir("usuario/vendasPorPeriodo", $array);
+    } else {
+        exibir("usuario/vendasPeriodo");
+    }    
 }

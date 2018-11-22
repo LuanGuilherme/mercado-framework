@@ -115,7 +115,7 @@ function carrinho($nome) {
             foreach ($_SESSION["feio"] as $indice => $aux) {
                 if ($nome == $aux["nomeproduto"]) {
                     $registro["reg"]["qtd"] = 1 + $aux["qtd"];
-                    $_SESSION["feio"][$indice] = null;
+                    $_SESSION["feio"][$indice] = null;  
                     unset($_SESSION["feio"][$indice]);
                 }
             }

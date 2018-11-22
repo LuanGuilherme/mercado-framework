@@ -3,7 +3,7 @@
 
     <div id="pedido">
         <h1 class="tituFinalizar">Pedidos</h1>
-        <p><?php echo $qtd  ?> produtos <a href="./produto/carrinho">visualizar produtos</a></p> <br>
+        <p><?php echo $_SESSION['qtdtotal']  ?> produtos <a href="./produto/carrinho">visualizar produtos</a></p> <br>
         <p>Total a pagar R$ <?php echo $_SESSION['total']  ?></p>
     </div>
 
@@ -37,7 +37,7 @@
     </div>
     
     <div id="fim">
-        <a href="./pedido/addPedido/<?=$qtd?>/<?=$nomeproduto?>"><h1 id="Pagar">Pagar Compra</h1></a>
+        <a href="./pedido/addPedido/<?=$_SESSION['qtd']?>/<?=$_SESSION['nomeproduto']?>"><h1 id="Pagar">Pagar Compra</h1></a>
     </div>
 </div>
 

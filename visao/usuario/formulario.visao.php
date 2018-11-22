@@ -68,13 +68,20 @@
 			<br>
 			<br>
 			</div>
-			<label for="Sexo">Sexo: </label>
-			<input type="radio" name="Sexo" value="Masculino" required="required"> Masculino
-  			<input type="radio" name="Sexo" value="Feminino" required="required"> Feminino<br>
-  			<br>
 			<?php extract($_POST); ?>	
   			<input type="submit" name="botao" id="botao" value="Submeter" onclick="validacao()">
 			
 		</form>
 	</section>		
 </body>
+<script>
+function validacao(){
+	senha = document.form.senha.value
+	senhad = document.form.senhad.value
+	if (senha != senhad){
+		alert ('As senhas devem ser iguais!');
+		document.form.getElementById('senhad').focus();
+		document.getElementById('form').action = "";
+	}
+}
+</script>

@@ -4,9 +4,9 @@ function adicionarCliente() {
     function cadastra ($nome, $email, $idade, $rua, $cidade, $estado, $numero, $senha, $cpf){
         $busca = "SELECT idcliente FROM clientes";
         if (mysqli_fetch_assoc(mysqli_query(conn(), $busca)) == NULL) {
-            alert($nome.$email.$idade.$rua.$cidade.$estado.$numero.$senha.$cpf);
             $sql = "INSERT INTO clientes(idcliente, nomecliente, email, idade, rua, cidade, estado, numero, senha, cpf)
         values (1 , '$nome', '$email', '$idade', '$rua', '$cidade', '$estado', '$numero', '$senha', '$cpf')";
+            alert($sql);
         }else{
             $sql = "INSERT INTO clientes(nomecliente, email, idade, rua, cidade, estado, numero, senha, cpf)
         values ('$nome', '$email', '$idade', '$rua', '$cidade', '$estado', '$numero', '$senha', '$cpf')";
@@ -60,10 +60,6 @@ function adicionarCliente() {
         }
         if (empty($_POST["cpf"]) or !filter_var($_POST["cpf"], FILTER_VALIDATE_FLOAT) or strlen($_POST["cpf"]) <> 11){
             echo "<script>alert('Preencha o campo Cpf com números inteiros!');</script>";
-            $count += 1;
-        }
-        if (!$_POST["sexo"]){
-            echo "<script>alert('Preencha o campo Sexo!');</script>";
             $count += 1;
         }
         if ($count == 1) {
@@ -148,5 +144,28 @@ function produtosCategoria(){
 }
 
 function pedidosEntreDatas ($data1, $data2) {
-    $sql = "CALL pedidos_intervalo_datas(@'$data1', @'$data2')";
+    $sql = "CALL pedidos_intervalo_datas('$data1', '$data2')";
+    $help = mysqli_query(conn(), $sql);
+    while($registro = mysqli_fetch_assoc($help)) {
+		$retorno[] = $registro;
+	}
+    return($retorno);
+}
+
+function pedidosMunicipio ($cidade) {
+    $sql = "CALL pedidos_municipio('$cidade')";
+    $help = mysqli_query(conn(), $sql);
+    while($registro = mysqli_fetch_assoc($help)) {
+		$retorno[] = $registro;
+    }
+    return($retorno);
+}
+
+function pedidosPeriodo ($data) {
+    $sql = "CALL faturamento_periodo('$data')";
+    $help = mysqli_query(conn(), $sql);
+    while($registro = mysqli_fetch_assoc($help)) {
+		$retorno[] = $registro;
+	}
+    return($retorno);
 }

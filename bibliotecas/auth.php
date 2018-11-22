@@ -26,6 +26,9 @@ function authLogout() {
         unset($_SESSION["auth"]);
         unset($_SESSION["idcliente"]);
         unset($_SESSION["adm"]);
+        $_SESSION['feio'] = null;
+        unset($_SESSION['feio']);
+        $_SESSION['total'] = 0;
         redirecionar("produto");
     }
 }

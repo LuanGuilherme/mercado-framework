@@ -9,15 +9,26 @@
 <h2 id="tituadmProduto">Relatórios</h2>
 <a class="admMudar" href='./cliente/qtdProdutosEstoque'>Produtos e sua quantidade em estoque</a>
 <a class="admMudar" href='./cliente/categoriaProdutos'>Produtos e sua categoria</a>
-<a class="admMudar" href='./cliente/vendasIntervaloDatas'>Pedidos por intervalo de datas</a>
+<a class="admMudar" href='./cliente/vendasIntervaloDatas'>Vendas entre datas</a>
+<a class="admMudar" href='./cliente/vendasMunicipio'>Vendas por municipio</a>
+<a class="admMudar" href='./cliente/vendasPeriodo'>Faturamento do dia</a>
 
 <h1 id="tituadmProduto">Cupons</h1>
+<h3><strong>Adicionar</strong></h3>
 <form action="./pedido/addCupom" method="POST">
     <label for="nomecupom">Digite o nome do cupom a ser criado:</label>
     <input class="form" type="text" name="nomecupom"> 
     
     <label for="valorcupom">Digite o valor do cupom a ser criado:</label>
     <input class="form" type="text" name="valorcupom">
+
+    <button id="botao" type="submit">Enviar</button>
+</form>
+
+<h3><strong>Deletar</strong></h3>
+<form action="./pedido/deleteCupom" method="POST">
+    <label for="nomecupom">Digite o nome do cupom a ser deletado:</label>
+    <input class="form" type="text" name="nomecupom"> 
 
     <button id="botao" type="submit">Enviar</button>
 </form>
